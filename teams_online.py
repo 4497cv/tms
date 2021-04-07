@@ -30,7 +30,14 @@ def locate_and_click(file_name, conf):
         x = b.left
         y = b.top
         selectText(x,y)
-  
+
+def locate(file_name, conf):
+    b = pyautogui.locateOnScreen(file_name, grayscale=True, confidence =conf)
+
+    if(b != None):
+        return 1 #TRUE
+    else:
+        return 0 #FALSE
 
 def getTeamsState():
     pixel = pyautogui.pixel(1347, 105)
@@ -55,11 +62,12 @@ def main():
         state = getTeamsState()
         print(state)
             
-##        if(state == "AWAY"):
-##            locate_and_click('img/chat.png',.8)
-##            time.sleep(2)
-##            locate_and_click('img/teams.png',.8)
-        time.sleep(10)
+        if(state == "AWAY"):
+            if(locate('img/teams.png', 1) == 0):
+                locate_and_click('img/chat.png',.8)
+                time.sleep(2.5)
+                locate_and_click('img/teams.png',.8)
+        time.sleep(60)
             
     sys.exit(0)
     
