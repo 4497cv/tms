@@ -67,7 +67,7 @@ def main():
                 locate_and_click('img/chat.png',.8)
                 time.sleep(2.5)
                 locate_and_click('img/teams.png',.8)
-        time.sleep(60)
+        time.sleep(5)
             
     sys.exit(0)
     
